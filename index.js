@@ -107,7 +107,7 @@ socket.on("R", function(data) {
 	players.delete(data.i);
 });
 
-PlayFabClientSDK.LoginWithEmailAddress({TitleId: "5417", Email: process.argv[3] || "my@email.com", Password: process.argv[4] || "mypass"}, function (error, data) {
+PlayFabClientSDK.LoginWithEmailAddress({TitleId: "5417", Email: process.argv[2] || "my@email.com", Password: process.argv[3] || "mypass"}, function (error, data) {
 	if (error)
 	{
 		console.error(error);
@@ -115,7 +115,7 @@ PlayFabClientSDK.LoginWithEmailAddress({TitleId: "5417", Email: process.argv[3] 
 	{
 		playerid = data.data.PlayFabId;
 		sessionticket = data.data.SessionTicket;
-		PlayFabClientSDK.GetAccountInfo({TitleId: "5417", Email: process.argv[3] || "my@email.com"}, function (error, data) {
+		PlayFabClientSDK.GetAccountInfo({TitleId: "5417", Email: process.argv[2] || "my@email.com"}, function (error, data) {
 			username = data.data.AccountInfo.TitleInfo.DisplayName;
 			socket.emit("login", {
 				"ticket": sessionticket
