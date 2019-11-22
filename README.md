@@ -20,7 +20,7 @@ TheTracker depends on Node.JS and the following packages:
 Simply clone or download the repository, instlll the needed packages with `npm install` and execute it with `node index.js <email> <password>`.
 
 ## Online version
-There is currently a version of TheTracker deployed on [Heroku] (https://bcthetracker.herokuapp.com).
+There is currently a version of TheTracker deployed on [Heroku](https://bcthetracker.herokuapp.com).
 
 ## License
 TheTracker by [@Alvarito050506](https://github.com/Alvarito050506) is licensed under the GNU General Public License version 2.0 (**GPL v2.0 only**). For more information, please see the LICENSE file.
