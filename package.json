@@ -1,0 +1,36 @@
+{
+  "name": "thetracker",
+  "version": "0.1.0",
+  "description": "BoxCritters user tracker.",
+  "main": "index.js",
+  "scripts": {
+    "test": "index.js",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alvarito050506/thetracker.git"
+  },
+  "author": "Alvarito050506",
+  "license": "GPL-2.0-only",
+  "bugs": {
+    "url": "https://github.com/Alvarito050506/thetracker/issues"
+  },
+  "homepage": "https://github.com/Alvarito050506/thetracker#readme",
+  "keywords": [
+    "boxcritters",
+    "bot",
+    "tracker"
+  ],
+  "engines": {
+    "node": "10.16.3"
+  },
+  "dependencies": {
+    "compression": "^1.7.4",
+    "express": "^4.17.1",
+    "helmet": "^3.21.2",
+    "http": "0.0.0",
+    "playfab-sdk": "^2.38.191029",
+    "socket.io-client": "^2.3.0"
+  }
+}
