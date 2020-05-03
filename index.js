@@ -27,7 +27,7 @@ class player
 	}
 }
 
-var roomids = ["tavern", "crash_site"];
+var roomids = ["tavern", "crash_site", "port", "cellar"];
 
 function sleep(ms)
 {
