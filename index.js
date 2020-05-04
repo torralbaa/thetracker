@@ -17,6 +17,8 @@ let i = 0;
 let j = 0;
 
 const PORT = process.env.PORT || 80;
+const EMAIL = process.argv[2] || process.env.EMAIL || "my@email.com";
+const PASSWORD = process.argv[3] || process.env.PASSWORD || "mypass";
 
 class player
 {
@@ -55,9 +57,7 @@ async function update()
 		{
 			j = 0;
 		}
-		socket.emit("joinRoom", {
-			roomId: roomids[j]
-		});
+		socket.emit("joinRoom", roomids[j]);
 		j++;
 		await async_sleep(60000);
 	}
@@ -68,7 +68,7 @@ app.use(helmet());
 
 PlayFab.settings.titleId = "5417";
 
-socket = io("https://boxcritters.herokuapp.com", {
+socket = io("https://play.boxcritters.com", {
 	transports: ["websocket"]
 });
 
@@ -87,15 +87,16 @@ socket.on("joinRoom", function(data) {
 		x: 100,
 		y: 200
 	});
-	while (i < data.playerlist.length)
+	while (i < data.PlayerCrumbs.length)
 	{
-		players.set(data.playerlist[i].i, {"username": data.playerlist[i].n, "playerid": data.playerlist[i].i});
+		players.set(data.PlayerCrumbs[i].i, {"username": data.PlayerCrumbs[i].n, "playerid": data.PlayerCrumbs[i].i});
 		i++;
 	}
 	i = 0;
 });
 
 socket.on("disconnect", function () {
+	console.log("Disconnected.");
 	socket.close();
 });
 
@@ -107,7 +108,7 @@ socket.on("R", function(data) {
 	players.delete(data.i);
 });
 
-PlayFabClientSDK.LoginWithEmailAddress({TitleId: "5417", Email: process.argv[2] || "my@email.com", Password: process.argv[3] || "mypass"}, function (error, data) {
+PlayFabClientSDK.LoginWithEmailAddress({TitleId: "5417", Email: EMAIL, Password: PASSWORD}, function (error, data) {
 	if (error)
 	{
 		console.error(error);
@@ -115,7 +116,7 @@ PlayFabClientSDK.LoginWithEmailAddress({TitleId: "5417", Email: process.argv[2] 
 	{
 		playerid = data.data.PlayFabId;
 		sessionticket = data.data.SessionTicket;
-		PlayFabClientSDK.GetAccountInfo({TitleId: "5417", Email: process.argv[2] || "my@email.com"}, function (error, data) {
+		PlayFabClientSDK.GetAccountInfo({TitleId: "5417", Email: EMAIL}, function (error, data) {
 			username = data.data.AccountInfo.TitleInfo.DisplayName;
 			socket.emit("login", {
 				"ticket": sessionticket
@@ -130,9 +131,7 @@ function main()
 {
 	sleep(5000);
 
-	socket.emit("joinRoom", {
-		roomId: "tavern"
-	});
+	socket.emit("joinRoom", "tavern");
 
 	sleep(5000);
 

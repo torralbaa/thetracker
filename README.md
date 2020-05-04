@@ -17,7 +17,7 @@ TheTracker depends on Node.JS and the following packages:
 + http
 
 ## How to use it?
-Simply clone or download the repository, instlll the needed packages with `npm install` and execute it with `node index.js <email> <password>`.
+Simply clone or download the repository, install the needed packages with `npm install` and execute it with `node index.js <email> <password>`.
 
 ## Online version
 There is currently a version of TheTracker deployed on [Heroku](https://bcthetracker.herokuapp.com).
