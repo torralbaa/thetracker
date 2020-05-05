@@ -1,7 +1,7 @@
 {
   "name": "thetracker",
-  "version": "0.1.0",
-  "description": "BoxCritters user tracker.",
+  "version": "0.2.0",
+  "description": "Box Critters user tracker.",
   "main": "index.js",
   "scripts": {
     "test": "index.js",
