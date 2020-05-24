@@ -68,7 +68,7 @@ app.use(helmet());
 
 PlayFab.settings.titleId = "5417";
 
-socket = io("https://play.boxcritters.com", {
+socket = io("https://boxcritters.herokuapp.com", {
 	transports: ["websocket"]
 });
 
@@ -97,7 +97,13 @@ socket.on("joinRoom", function(data) {
 
 socket.on("disconnect", function () {
 	console.log("Disconnected.");
-	socket.close();
+	socket.emit("disconnect");
+	/* socket.close(); */
+});
+
+socket.on("connect", function () {
+	console.log("Connected.");
+	socket.emit("connect");
 });
 
 socket.on("A", function(data) {
